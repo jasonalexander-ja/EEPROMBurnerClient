@@ -1,4 +1,14 @@
-## Python Template Repository
+## 28C16 EEPROM Burner Client
+
+This is a simple program to be used in conjunction with [this](https://github.com/jasonalexander-ja/PicoEEPROMBurner)
+program for the Raspberry Pi Pico to burn the 28C16 and compatilble EEPROMs with binary format files specified over 
+the command line. 
+
+To use simple run; 
+
+`python main.py [com port Pico is on] [path to binary file]`
+
+### Dev/Debug
 
 Setup with useful VSC, Git configuration and libraries. 
 

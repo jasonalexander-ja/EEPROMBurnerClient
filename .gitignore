@@ -3,6 +3,7 @@
 /.coverage/
 /htmlcov/
 /Scripts/
+/bin/
 /Lib/
 /Include/
 

@@ -1,13 +1,9 @@
 from typing import Optional, Any
 import sys
 
-class Serial:
+import time
 
-    def __init__(self, data, baudrate) -> None:
-        pass
-
-    def write(self, data: bytes):
-        print(data)
+from serial import Serial
 
 
 
@@ -33,6 +29,8 @@ def write_to_port(data: bytes, com_port: str):
 
     for pos, byte in enumerate(data):
         write_byte(pos, byte, s)
+    
+    s.close()
 
 
 def write_byte(addr: int, byte: int, port: Serial):
@@ -40,9 +38,15 @@ def write_byte(addr: int, byte: int, port: Serial):
     upper_addr = format((addr >> 8) & 0b111, '03d')
     data = format(byte, '03d')
 
-    port.write(f"L{lower_addr}".encode())
-    port.write(f"U{upper_addr}".encode())
-    port.write(f"D{data}".encode())
+    serial_write_await(port, f"L{lower_addr}")
+    serial_write_await(port, f"U{upper_addr}")
+    serial_write_await(port, f"D{data}")
+    serial_write_await(port, 'F')
+
+
+def serial_write_await(s: Serial, data: str):
+    s.write(data.encode())
+    s.readline()
 
 
 def open_file(path: str) -> Optional[bytes]:
