@@ -1,7 +1,5 @@
-from typing import Optional, Any
+from typing import Optional
 import sys
-
-import time
 
 from serial import Serial
 
