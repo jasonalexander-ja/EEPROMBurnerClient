@@ -4,7 +4,6 @@ import sys
 from serial import Serial
 
 
-
 def main():
     if len(sys.argv) < 3:
         print("Please specify a file and a port. ")
@@ -54,6 +53,7 @@ def open_file(path: str) -> Optional[bytes]:
     except:
         print(f"Failed to find file: {path}")
         return None
+
 
 if __name__ == "__main__":
     main()
