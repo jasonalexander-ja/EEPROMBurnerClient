@@ -1,1 +1,1 @@
-.\Scripts\python.exe main.py %*
+.\Scripts\python.exe DataDump.py %*
