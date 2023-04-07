@@ -24,15 +24,18 @@ def write_to_port(data: bytes, com_port: str):
     except:
         print(f"Failed to open COM port {com_port}")
 
+    quarter_way = int(len(data) / 4)
+
     for pos, byte in enumerate(data):
         write_byte(pos, byte, s)
+        print(pos)
     
     s.close()
 
 
 def write_byte(addr: int, byte: int, port: Serial):
     lower_addr = format(addr & 0xFF, '03d')
-    upper_addr = format((addr >> 8) & 0b111, '03d')
+    upper_addr = format((addr >> 8) & 0x7F, '03d')
     data = format(byte, '03d')
 
     serial_write_await(port, f"L{lower_addr}")
