@@ -7,7 +7,7 @@ from serial import Serial
 
 def main():
     if len(sys.argv) < 3:
-        print("Please specify a file and a port. ")
+        print("Please specify a file and a port. ") 
         return
     _, com_port, path = sys.argv
 
@@ -41,8 +41,7 @@ def write_byte(addr: int, byte: int, port: Serial):
 
     serial_write_await(port, f"L{lower_addr}")
     serial_write_await(port, f"U{upper_addr}")
-    serial_write_await(port, f"D{data}")
-    serial_write_await(port, 'F')
+    serial_write_await(port, f"S{data}")
 
 
 def serial_write_await(s: Serial, data: str):

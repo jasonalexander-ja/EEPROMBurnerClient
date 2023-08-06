@@ -27,7 +27,7 @@ def main():
 
 def read_eeprom_data(port: Serial) -> Generator[int, None, None]:
     for addr in range(0x7FFF):
-
+        print(addr)
         lower_addr = format(addr & 0xFF, '03d')
         upper_addr = format((addr >> 8) & 0x7F, '03d')
 
